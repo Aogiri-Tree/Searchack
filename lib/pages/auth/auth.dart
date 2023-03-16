@@ -137,7 +137,7 @@ class AuthPage extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             vertical: 15,
-                            horizontal: 125,
+                            horizontal: 115,
                           ),
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
