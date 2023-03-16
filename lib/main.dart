@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:searchack/pages/auth/auth.dart';
+import 'package:searchack/pages/main/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: AuthPage(),
+      debugShowCheckedModeBanner: false,
+      home: MainPage(),
     );
   }
 }
