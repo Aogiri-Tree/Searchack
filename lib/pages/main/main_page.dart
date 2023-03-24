@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:searchack/pages/main/catalog/catalog_page.dart';
 import 'package:searchack/pages/main/chat/chat_page.dart';
+import 'package:searchack/pages/main/favourite/favourite_page.dart';
 import 'package:searchack/pages/main/home/home_page.dart';
 import 'package:searchack/pages/main/profile/profile_page.dart';
 
@@ -19,6 +20,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _widgetOptions = const <Widget>[
     HomePage(),
     CatalogPage(),
+    FavouritePage(),
     ChatPage(),
     ProfilePage()
   ];
@@ -59,6 +61,17 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
               label: 'Каталог',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset( "assets/icons/gray_star.svg"),
+              activeIcon: SvgPicture.asset(
+                "assets/icons/star.svg",
+                colorFilter: const ColorFilter.mode(
+                  Color.fromRGBO(1, 110, 237, 1),
+                  BlendMode.srcIn,
+                ),
+              ),
+              label: 'Избранное',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
