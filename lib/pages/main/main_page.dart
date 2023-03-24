@@ -36,6 +36,7 @@ class _MainPageState extends State<MainPage> {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           showUnselectedLabels: true,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
