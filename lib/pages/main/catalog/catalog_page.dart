@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:searchack/pages/main/catalog/widgets/hackaton_card_widget.dart';
 import 'package:searchack/pages/main/catalog/widgets/search_field_widget.dart';
 import 'package:searchack/pages/main/catalog/widgets/specialization_choise_widet.dart';
 
@@ -26,7 +27,18 @@ class CatalogPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             SearchFieldWidget(),
+            SizedBox(
+              height: 4,
+            ),
             SpecializationChoiseWidget(),
+            SizedBox(
+              height: 10,
+            ),
+            HackatonCardWidget(
+              title: 'Masters of Arts: ML Challenge',
+              description:
+                  'Искусство и искусственный интеллект: распознай вид произведения по фотографии — новое соревнование Masters of Arts: ML Challenge от Codenrock.',
+            ),
           ],
         ),
       ),
