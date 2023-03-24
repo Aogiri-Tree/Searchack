@@ -22,9 +22,7 @@ class ChatWidget extends StatelessWidget {
       child: ListTile(
         leading: const CircleAvatar(
           radius: 28,
-          backgroundImage: NetworkImage(
-            "https://mykaleidoscope.ru/x/uploads/posts/2022-09/1663224374_37-mykaleidoscope-ru-p-ustavshii-voin-oboi-44.jpg",
-          ),
+          backgroundImage: AssetImage('assets/logo.png'),
         ),
         title: Text(
           name,
