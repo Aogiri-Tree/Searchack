@@ -31,7 +31,9 @@ class _SpecializationChoiseWidgetState
                   onSelected: (_) {
                     setState(() {
                       if (selectedChoices.contains(all)) {
-                        selectedChoices.clear();
+                        if (selectedChoices.length != 1) {
+                          selectedChoices.clear();
+                        }
                       } else {
                         selectedChoices.clear();
                         selectedChoices.add(all);

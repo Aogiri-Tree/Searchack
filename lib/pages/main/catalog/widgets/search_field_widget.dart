@@ -18,6 +18,10 @@ class SearchFieldWidget extends StatelessWidget {
                 contentPadding: const EdgeInsets.symmetric(vertical: 9),
                 prefixIcon: SvgPicture.asset(
                   "assets/icons/search.svg",
+                  colorFilter: const ColorFilter.mode(
+                    Color.fromRGBO(106, 106, 106, 1),
+                    BlendMode.srcIn,
+                  ),
                   fit: BoxFit.none,
                 ),
                 border: const OutlineInputBorder(
@@ -53,7 +57,7 @@ class SearchFieldWidget extends StatelessWidget {
               color: Colors.white,
             ),
             child: SvgPicture.asset(
-              "assets/icons/sliders.svg",
+              "assets/icons/filter.svg",
               fit: BoxFit.none,
             ),
           ),

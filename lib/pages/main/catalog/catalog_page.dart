@@ -25,19 +25,26 @@ class CatalogPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            SearchFieldWidget(),
-            SizedBox(
+          children: [
+            const SearchFieldWidget(),
+            const SizedBox(
               height: 4,
             ),
-            SpecializationChoiseWidget(),
-            SizedBox(
+            const SpecializationChoiseWidget(),
+            const SizedBox(
               height: 10,
             ),
-            HackatonCardWidget(
-              title: 'Masters of Arts: ML Challenge',
-              description:
-                  'Искусство и искусственный интеллект: распознай вид произведения по фотографии — новое соревнование Masters of Arts: ML Challenge от Codenrock.',
+            Expanded(
+              child: ListView.builder(
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return const HackatonCardWidget(
+                    title: 'Masters of Arts: ML Challenge',
+                    description:
+                        'Искусство и искусственный интеллект: распознай вид произведения по фотографии — новое соревнование Masters of Arts: ML Challenge от Codenrock.',
+                  );
+                },
+              ),
             ),
           ],
         ),
