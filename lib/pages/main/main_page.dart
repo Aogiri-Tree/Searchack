@@ -64,7 +64,7 @@ class _MainPageState extends State<MainPage> {
               label: 'Каталог',
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset( "assets/icons/gray_star.svg"),
+              icon: SvgPicture.asset("assets/icons/gray_star.svg"),
               activeIcon: SvgPicture.asset(
                 "assets/icons/star.svg",
                 colorFilter: const ColorFilter.mode(
