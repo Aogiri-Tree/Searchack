@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:searchack/pages/auth/auth.dart';
 import 'package:searchack/pages/main/main_page.dart';
 
 void main() {
