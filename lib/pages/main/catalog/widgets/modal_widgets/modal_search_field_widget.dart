@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SearchFieldWidget extends StatelessWidget {
-  const SearchFieldWidget({
-    Key? key,
-    required this.onTap,
-  }) : super(key: key);
-  final void Function()? onTap;
+class ModalSearchFieldWidget extends StatelessWidget {
+  const ModalSearchFieldWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +14,7 @@ class SearchFieldWidget extends StatelessWidget {
             child: TextFormField(
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: const Color.fromRGBO(245, 245, 245, 1),
                 contentPadding: const EdgeInsets.symmetric(vertical: 9),
                 prefixIcon: SvgPicture.asset(
                   "assets/icons/search.svg",
@@ -42,27 +38,6 @@ class SearchFieldWidget extends StatelessWidget {
                   color: Color.fromRGBO(106, 106, 106, 1),
                 ),
               ),
-            ),
-          ),
-        ),
-        const SizedBox(
-          width: 11,
-        ),
-        InkWell(
-          onTap: onTap,
-          child: Container(
-            padding: const EdgeInsets.all(9),
-            width: 36,
-            height: 36,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8),
-              ),
-              color: Colors.white,
-            ),
-            child: SvgPicture.asset(
-              "assets/icons/filter.svg",
-              fit: BoxFit.none,
             ),
           ),
         ),
