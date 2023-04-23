@@ -1,14 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:searchack/models/hackaton_model.dart';
 import 'package:searchack/pages/auth/login/login_page.dart';
 import 'package:searchack/pages/main/main_page.dart';
 import 'package:searchack/services/firebase_auth_service.dart';
+import 'package:searchack/services/hackaton_service.dart';
 import 'package:searchack/store/auth_store.dart';
 
+late final Hackaton hacks;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  hacks = await HackatonService().getHacks();
 
   runApp(MyApp(
     firebaseAuthService: FirebaseAuthServiceImpl(FirebaseAuth.instance),
