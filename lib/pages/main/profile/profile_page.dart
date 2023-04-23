@@ -15,6 +15,10 @@ class ProfilePage extends StatelessWidget {
             child: SvgPicture.asset("assets/icons/share.svg"),
           ),
         ],
+        leading: const Icon(
+          Icons.settings,
+          color: Color(0xffD4D4D4),
+        ),
         centerTitle: true,
         bottomOpacity: 0.0,
         backgroundColor: Colors.transparent,
@@ -186,7 +190,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const Spacer(),
                         SvgPicture.asset(
-                          "assets/icons/plus.svg",
+                          "assets/icons/pencil.svg",
                         ),
                         const SizedBox(width: 18),
                       ],
@@ -226,7 +230,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const Spacer(),
                         SvgPicture.asset(
-                          "assets/icons/plus.svg",
+                          "assets/icons/pencil.svg",
                         ),
                         const SizedBox(width: 18),
                       ],

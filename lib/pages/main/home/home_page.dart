@@ -10,7 +10,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         bottomOpacity: 0.0,
+        titleSpacing: 16.0,
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
@@ -26,17 +28,31 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            const SectionTitleWidget(
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 144,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 16,
+                bottom: 24,
+                top: 20,
+              ),
+              child: _Carousel(),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: SectionTitleWidget(
               title: 'Популярное',
             ),
-            const SizedBox(
-              height: 12,
-            ),
-            Expanded(
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -55,9 +71,87 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+}
+
+class _Carousel extends StatelessWidget {
+  const _Carousel({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return _CardChooser(
+          index: index,
+        );
+      },
+      separatorBuilder: (context, index) {
+        return const SizedBox(width: 8);
+      },
+    );
+  }
+}
+
+class _CardChooser extends StatelessWidget {
+  const _CardChooser({super.key, required this.index});
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return index == 0
+        ? Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(6)),
+              color: Color(0xff016EED),
+            ),
+            width: 62,
+            height: 100,
+            child: Column(
+              children: [
+                const SizedBox(height: 8),
+                SvgPicture.asset("assets/icons/union.svg"),
+                const SizedBox(height: 15),
+                const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    'Все Сферы',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xffFFFFFF),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        : index % 2 != 0
+            ? Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(6)),
+                  color: Color(0xffC0DDFF),
+                ),
+                width: 117,
+                height: 100,
+              )
+            : Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(6)),
+                  gradient: RadialGradient(
+                    colors: [
+                      Color(0xff00BCFE),
+                      Color(0xff016EED),
+                    ],
+                  ),
+                ),
+                width: 90,
+                height: 100,
+              );
   }
 }
