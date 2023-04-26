@@ -3,6 +3,7 @@ class Past {
   String? town;
   String? dateOfLive;
   String? isOpen;
+  String? isOnline;
   String? address;
   String? url;
   String? description;
@@ -13,6 +14,7 @@ class Past {
     this.address,
     this.dateOfLive,
     this.isOpen,
+    this.isOnline,
     this.town,
     this.url,
   });
@@ -23,6 +25,7 @@ class Past {
     address = json['address'];
     dateOfLive = json['dateOfLive'];
     isOpen = json['isOpen'];
+    isOnline = json['isOnline'];
     town = json['town'];
     url = json['url'];
   }
@@ -34,6 +37,7 @@ class Past {
     data['address'] = address;
     data['dateOfLive'] = dateOfLive;
     data['isOpen'] = isOpen;
+    data['isOnline'] = isOnline;
     data['town'] = town;
     data['url'] = url;
     return data;

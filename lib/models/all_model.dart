@@ -1,4 +1,4 @@
-class Present {
+class All {
   String? hackName;
   String? town;
   String? dateOfLive;
@@ -8,7 +8,7 @@ class Present {
   String? url;
   String? description;
 
-  Present({
+  All({
     this.hackName,
     this.description,
     this.address,
@@ -19,7 +19,7 @@ class Present {
     this.url,
   });
 
-  Present.fromJson(Map<String, dynamic> json) {
+  All.fromJson(Map<String, dynamic> json) {
     hackName = json['hackName'];
     description = json['description'];
     address = json['address'];
