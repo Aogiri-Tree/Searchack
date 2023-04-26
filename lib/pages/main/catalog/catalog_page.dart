@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:searchack/main.dart';
 import 'package:searchack/pages/main/catalog/widgets/hackaton_card_widget.dart';
 import 'package:searchack/pages/main/catalog/widgets/modal_widgets/modal_search_field_widget.dart';
 import 'package:searchack/pages/main/catalog/widgets/modal_widgets/town_picker_widget.dart';
@@ -92,12 +93,15 @@ class _CatalogPageState extends State<CatalogPage> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: hacks.all!.length,
                 itemBuilder: (context, index) {
-                  return const HackatonCardWidget(
-                    title: 'Masters of Arts: ML Challenge',
-                    description:
-                        'Искусство и искусственный интеллект: распознай вид произведения по фотографии — новое соревнование Masters of Arts: ML Challenge от Codenrock.',
+                  return HackatonCardWidget(
+                    url: hacks.all![index].url!,
+                    hackName: hacks.all![index].hackName!,
+                    isOpen: hacks.all![index].isOpen!,
+                    isOnline: hacks.all![index].isOnline!,
+                    description: hacks.all![index].description!,
+                    address: hacks.all![index].address!,
                   );
                 },
               ),
