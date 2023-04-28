@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:searchack/pages/main/open_chat/open_chat_page.dart';
 
 class ChatWidget extends StatelessWidget {
   final String name;
@@ -18,7 +19,14 @@ class ChatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const OpenChatPage(),
+          ),
+        );
+      },
       child: ListTile(
         leading: const CircleAvatar(
           radius: 28,
