@@ -5,19 +5,21 @@ class HackatonCardWidget extends StatelessWidget {
   const HackatonCardWidget({
     super.key,
     required this.description,
-    required this.url,
+    required this.imageUrl,
     required this.hackName,
     required this.isOpen,
     required this.isOnline,
     required this.address,
+    required this.regUrl,
   });
 
-  final String url;
+  final String imageUrl;
   final String hackName;
   final String isOpen;
   final String isOnline;
   final String description;
   final String address;
+  final String regUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +29,13 @@ class HackatonCardWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => HackatonInfoPage(
-              url: url,
+              imageUrl: imageUrl,
               hackName: hackName,
               isOpen: isOpen,
               isOnline: isOnline,
               description: description,
               address: address,
+              regUrl: regUrl,
             ),
           ),
         );
@@ -57,7 +60,7 @@ class HackatonCardWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    url,
+                    imageUrl,
                     fit: BoxFit.fitHeight,
                   ),
                 ),

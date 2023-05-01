@@ -1,21 +1,27 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HackatonInfoPage extends StatelessWidget {
-  const HackatonInfoPage(
-      {super.key,
-      required this.url,
-      required this.hackName,
-      required this.isOpen,
-      required this.isOnline,
-      required this.description,
-      required this.address});
+  const HackatonInfoPage({
+    super.key,
+    required this.imageUrl,
+    required this.hackName,
+    required this.isOpen,
+    required this.isOnline,
+    required this.description,
+    required this.address,
+    required this.regUrl,
+  });
 
-  final String url;
+  final String imageUrl;
   final String hackName;
   final String isOpen;
   final String isOnline;
   final String description;
   final String address;
+  final String regUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +53,7 @@ class HackatonInfoPage extends StatelessWidget {
           SizedBox(
             height: 390,
             width: double.infinity,
-            child: Image.network(url),
+            child: Image.network(imageUrl),
           ),
           // const SizedBox(
           //   height: 24,
@@ -80,7 +86,35 @@ class HackatonInfoPage extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Text('Адрес: $address'),
+                GestureDetector(
+                  child: Text(
+                    'Адрес: $address',
+                    style:
+                        const TextStyle(color: Color.fromRGBO(1, 110, 237, 1)),
+                  ),
+                  onTap: () async {
+                    String query = Uri.encodeComponent(address);
+                    String googleUrl =
+                        "https://www.google.com/maps/search/?api=1&query=$query";
+
+                    if (await canLaunch(googleUrl)) {
+                      await launch(googleUrl);
+                    }
+                  },
+                ),
+                const SizedBox(height: 20),
+                Center(
+                  child: ElevatedButton(
+                      style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                              Color.fromRGBO(1, 110, 237, 1))),
+                      onPressed: () async {
+                        if (await canLaunch(regUrl)) {
+                          await launch(regUrl);
+                        }
+                      },
+                      child: const Text('Зарегистрироваться')),
+                )
               ],
             ),
           )

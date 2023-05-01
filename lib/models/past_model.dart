@@ -5,7 +5,7 @@ class Past {
   String? isOpen;
   String? isOnline;
   String? address;
-  String? url;
+  String? imageUrl;
   String? description;
 
   Past({
@@ -16,7 +16,7 @@ class Past {
     this.isOpen,
     this.isOnline,
     this.town,
-    this.url,
+    this.imageUrl,
   });
 
   Past.fromJson(Map<String, dynamic> json) {
@@ -27,7 +27,7 @@ class Past {
     isOpen = json['isOpen'];
     isOnline = json['isOnline'];
     town = json['town'];
-    url = json['url'];
+    imageUrl = json['imageUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -39,7 +39,7 @@ class Past {
     data['isOpen'] = isOpen;
     data['isOnline'] = isOnline;
     data['town'] = town;
-    data['url'] = url;
+    data['imageUrl'] = imageUrl;
     return data;
   }
 }

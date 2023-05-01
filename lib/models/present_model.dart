@@ -5,19 +5,20 @@ class Present {
   String? isOpen;
   String? isOnline;
   String? address;
-  String? url;
+  String? imageUrl;
   String? description;
+  String? regUrl;
 
-  Present({
-    this.hackName,
-    this.description,
-    this.address,
-    this.dateOfLive,
-    this.isOpen,
-    this.isOnline,
-    this.town,
-    this.url,
-  });
+  Present(
+      {this.hackName,
+      this.description,
+      this.address,
+      this.dateOfLive,
+      this.isOpen,
+      this.isOnline,
+      this.town,
+      this.imageUrl,
+      this.regUrl});
 
   Present.fromJson(Map<String, dynamic> json) {
     hackName = json['hackName'];
@@ -27,7 +28,8 @@ class Present {
     isOpen = json['isOpen'];
     isOnline = json['isOnline'];
     town = json['town'];
-    url = json['url'];
+    imageUrl = json['imageUrl'];
+    regUrl = json['regUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -39,7 +41,8 @@ class Present {
     data['isOpen'] = isOpen;
     data['isOnline'] = isOnline;
     data['town'] = town;
-    data['url'] = url;
+    data['imageUrl'] = imageUrl;
+    data['regUrl'] = regUrl;
     return data;
   }
 }

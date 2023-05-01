@@ -5,8 +5,9 @@ class All {
   String? isOpen;
   String? isOnline;
   String? address;
-  String? url;
+  String? imageUrl;
   String? description;
+  String? regUrl;
 
   All({
     this.hackName,
@@ -16,7 +17,8 @@ class All {
     this.isOpen,
     this.isOnline,
     this.town,
-    this.url,
+    this.imageUrl,
+    this.regUrl,
   });
 
   All.fromJson(Map<String, dynamic> json) {
@@ -27,7 +29,8 @@ class All {
     isOpen = json['isOpen'];
     isOnline = json['isOnline'];
     town = json['town'];
-    url = json['url'];
+    imageUrl = json['imageUrl'];
+    regUrl = json['regUrl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -39,7 +42,8 @@ class All {
     data['isOpen'] = isOpen;
     data['isOnline'] = isOnline;
     data['town'] = town;
-    data['url'] = url;
+    data['imageUrl'] = imageUrl;
+    data['regUrl'] = regUrl;
     return data;
   }
 }
