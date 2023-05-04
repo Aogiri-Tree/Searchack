@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:searchack/models/hackaton_model.dart';
+import 'package:searchack/pages/admin/admin_page.dart';
 import 'package:searchack/pages/auth/login/login_page.dart';
 import 'package:searchack/pages/main/main_page.dart';
 import 'package:searchack/services/firebase_auth_service.dart';
@@ -34,9 +35,15 @@ class MyApp extends StatelessWidget {
           stream: firebaseAuthService.authStateChanges,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const MainPage();
+              if (snapshot.data?.uid == "xvI1CuzOQ0hNX1svDUnR5dkaEEf2") {
+                return const AdminPage();
+              } else {
+                return const MainPage();
+              }
             } else {
-              return LoginPage(authStore: AuthStore());
+              return LoginPage(
+                authStore: AuthStore(),
+              );
             }
           }),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:searchack/main.dart';
+import 'package:searchack/models/all_model.dart';
 import 'package:searchack/pages/main/hackaton_info/hackaton_info_page.dart';
 
-class HackatonCardWidget extends StatelessWidget {
+class HackatonCardWidget extends StatefulWidget {
   const HackatonCardWidget({
     super.key,
     required this.description,
@@ -11,6 +13,7 @@ class HackatonCardWidget extends StatelessWidget {
     required this.isOnline,
     required this.address,
     required this.regUrl,
+    required this.inPriority,
   });
 
   final String imageUrl;
@@ -20,6 +23,14 @@ class HackatonCardWidget extends StatelessWidget {
   final String description;
   final String address;
   final String regUrl;
+  final bool inPriority;
+
+  @override
+  State<HackatonCardWidget> createState() => _HackatonCardWidgetState();
+}
+
+class _HackatonCardWidgetState extends State<HackatonCardWidget> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +40,14 @@ class HackatonCardWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => HackatonInfoPage(
-              imageUrl: imageUrl,
-              hackName: hackName,
-              isOpen: isOpen,
-              isOnline: isOnline,
-              description: description,
-              address: address,
-              regUrl: regUrl,
+              imageUrl: widget.imageUrl,
+              hackName: widget.hackName,
+              isOpen: widget.isOpen,
+              isOnline: widget.isOnline,
+              description: widget.description,
+              address: widget.address,
+              regUrl: widget.regUrl,
+              inPriority: widget.inPriority,
             ),
           ),
         );
@@ -60,7 +72,7 @@ class HackatonCardWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    imageUrl,
+                    widget.imageUrl,
                     fit: BoxFit.fitHeight,
                   ),
                 ),
@@ -72,18 +84,34 @@ class HackatonCardWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '$isOpen   $isOnline',
-                      style: const TextStyle(
-                        fontSize: 10,
-                        color: Color.fromRGBO(1, 110, 237, 1),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${widget.isOpen}   ${widget.isOnline}',
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: Color.fromRGBO(1, 110, 237, 1),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {});
+                            isFavorite = !isFavorite;
+                          },
+                          child: Icon(
+                            Icons.favorite,
+                            size: 20,
+                            color: isFavorite ? Colors.red : Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(
                       height: 5,
                     ),
                     Text(
-                      hackName,
+                      widget.hackName,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -93,7 +121,7 @@ class HackatonCardWidget extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      description,
+                      widget.description,
                       style: const TextStyle(fontSize: 10),
                       maxLines: 5,
                       overflow: TextOverflow.ellipsis,

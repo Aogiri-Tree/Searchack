@@ -8,17 +8,20 @@ class Present {
   String? imageUrl;
   String? description;
   String? regUrl;
+  bool? inPriority;
 
-  Present(
-      {this.hackName,
-      this.description,
-      this.address,
-      this.dateOfLive,
-      this.isOpen,
-      this.isOnline,
-      this.town,
-      this.imageUrl,
-      this.regUrl});
+  Present({
+    this.hackName,
+    this.description,
+    this.address,
+    this.dateOfLive,
+    this.isOpen,
+    this.isOnline,
+    this.town,
+    this.imageUrl,
+    this.regUrl,
+    this.inPriority,
+  });
 
   Present.fromJson(Map<String, dynamic> json) {
     hackName = json['hackName'];
@@ -30,6 +33,7 @@ class Present {
     town = json['town'];
     imageUrl = json['imageUrl'];
     regUrl = json['regUrl'];
+    inPriority = json['inPriority'];
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +47,7 @@ class Present {
     data['town'] = town;
     data['imageUrl'] = imageUrl;
     data['regUrl'] = regUrl;
+    data['inPriority'] = inPriority;
     return data;
   }
 }

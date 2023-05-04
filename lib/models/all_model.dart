@@ -8,6 +8,7 @@ class All {
   String? imageUrl;
   String? description;
   String? regUrl;
+  bool? inPriority;
 
   All({
     this.hackName,
@@ -19,6 +20,7 @@ class All {
     this.town,
     this.imageUrl,
     this.regUrl,
+    this.inPriority,
   });
 
   All.fromJson(Map<String, dynamic> json) {
@@ -31,6 +33,7 @@ class All {
     town = json['town'];
     imageUrl = json['imageUrl'];
     regUrl = json['regUrl'];
+    inPriority = json['inPriority'];
   }
 
   Map<String, dynamic> toJson() {
@@ -44,6 +47,7 @@ class All {
     data['town'] = town;
     data['imageUrl'] = imageUrl;
     data['regUrl'] = regUrl;
+    data['inPriority'] = inPriority;
     return data;
   }
 }

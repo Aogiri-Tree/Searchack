@@ -7,6 +7,8 @@ class Past {
   String? address;
   String? imageUrl;
   String? description;
+  String? regUrl;
+  bool? inPriority;
 
   Past({
     this.hackName,
@@ -17,6 +19,8 @@ class Past {
     this.isOnline,
     this.town,
     this.imageUrl,
+    this.regUrl,
+    this.inPriority,
   });
 
   Past.fromJson(Map<String, dynamic> json) {
@@ -28,6 +32,8 @@ class Past {
     isOnline = json['isOnline'];
     town = json['town'];
     imageUrl = json['imageUrl'];
+    regUrl = json['regUrl'];
+    inPriority = json['inPriority'];
   }
 
   Map<String, dynamic> toJson() {
@@ -40,6 +46,8 @@ class Past {
     data['isOnline'] = isOnline;
     data['town'] = town;
     data['imageUrl'] = imageUrl;
+    data['regUrl'] = regUrl;
+    data['inPriority'] = inPriority;
     return data;
   }
 }

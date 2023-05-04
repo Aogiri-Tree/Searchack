@@ -103,6 +103,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     description: hacks.all![index].description!,
                     address: hacks.all![index].address!,
                     regUrl: hacks.all![index].regUrl!,
+                    inPriority: hacks.all![index].inPriority!,
                   );
                 },
               ),

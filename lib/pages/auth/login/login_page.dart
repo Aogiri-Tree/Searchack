@@ -1,11 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:searchack/pages/admin/admin_page.dart';
 import 'package:searchack/pages/auth/register/register_page.dart';
 import 'package:searchack/pages/main/main_page.dart';
 import 'package:searchack/services/validator_service.dart';
 import 'package:searchack/store/auth_store.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.authStore});
+  const LoginPage({
+    super.key,
+    required this.authStore,
+  });
   final AuthStore authStore;
 
   @override
@@ -118,16 +123,27 @@ class _LoginPageState extends State<LoginPage> {
                               if (!_key.currentState!.validate()) {
                                 return;
                               }
-                              await widget.authStore.signIn(
+
+                              var res = await widget.authStore.signIn(
                                 _loginTextController.text.trim(),
                                 _passwordTextController.text.trim(),
-                              )
+                              );
+                              res &&
+                                      _loginTextController.text ==
+                                          "admin@mail.ru" &&
+                                      _passwordTextController.text == "adminX"
+                                  // ignore: use_build_context_synchronously
                                   ? Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const MainPage()))
-                                  : null;
+                                              const AdminPage()))
+                                  // ignore: use_build_context_synchronously
+                                  : Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const MainPage()));
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
