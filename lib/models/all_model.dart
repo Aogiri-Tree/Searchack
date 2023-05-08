@@ -9,6 +9,7 @@ class All {
   String? description;
   String? regUrl;
   bool? inPriority;
+  bool? isFavorite;
 
   All({
     this.hackName,
@@ -21,6 +22,7 @@ class All {
     this.imageUrl,
     this.regUrl,
     this.inPriority,
+    this.isFavorite,
   });
 
   All.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class All {
     imageUrl = json['imageUrl'];
     regUrl = json['regUrl'];
     inPriority = json['inPriority'];
+    isFavorite = json['isFavorite'];
   }
 
   Map<String, dynamic> toJson() {
@@ -48,6 +51,7 @@ class All {
     data['imageUrl'] = imageUrl;
     data['regUrl'] = regUrl;
     data['inPriority'] = inPriority;
+    data['isFavorite'] = isFavorite;
     return data;
   }
 }

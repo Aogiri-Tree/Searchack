@@ -1,35 +1,22 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:searchack/main.dart';
+import 'package:searchack/models/all_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HackatonInfoPage extends StatelessWidget {
   const HackatonInfoPage({
     super.key,
-    required this.imageUrl,
-    required this.hackName,
-    required this.isOpen,
-    required this.isOnline,
-    required this.description,
-    required this.address,
-    required this.regUrl,
-    required this.inPriority,
+    required this.hack,
   });
 
-  final String imageUrl;
-  final String hackName;
-  final String isOpen;
-  final String isOnline;
-  final String description;
-  final String address;
-  final String regUrl;
-  final bool inPriority;
+  final All hack;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: inPriority ? Color.fromARGB(139, 0, 0, 0) : Colors.white,
+      backgroundColor:
+          hack.inPriority! ? const Color.fromARGB(139, 0, 0, 0) : Colors.white,
       appBar: AppBar(
         bottomOpacity: 0.0,
         backgroundColor: Colors.transparent,
@@ -58,29 +45,26 @@ class HackatonInfoPage extends StatelessWidget {
             SizedBox(
               height: 390,
               width: double.infinity,
-              child: Image.network(imageUrl),
+              child: Image.network(hack.imageUrl!),
             ),
-            // const SizedBox(
-            //   height: 24,
-            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    hackName,
+                    hack.hackName!,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: inPriority ? Colors.white : Colors.black,
+                      color: hack.inPriority! ? Colors.white : Colors.black,
                     ),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                   Text(
-                    '$isOpen   $isOnline',
+                    '${hack.isOpen!}   ${hack.isOnline}',
                     style: const TextStyle(
                       color: Color.fromRGBO(1, 110, 237, 1),
                     ),
@@ -89,9 +73,9 @@ class HackatonInfoPage extends StatelessWidget {
                     height: 24,
                   ),
                   Text(
-                    description,
+                    hack.description!,
                     style: TextStyle(
-                      color: inPriority ? Colors.white : Colors.black,
+                      color: hack.inPriority! ? Colors.white : Colors.black,
                     ),
                   ),
                   const SizedBox(
@@ -99,13 +83,13 @@ class HackatonInfoPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     child: Text(
-                      'Адрес: $address',
+                      'Адрес: ${hack.address}',
                       style: const TextStyle(
                         color: Color.fromRGBO(1, 110, 237, 1),
                       ),
                     ),
                     onTap: () async {
-                      String query = Uri.encodeComponent(address);
+                      String query = Uri.encodeComponent(hack.address!);
                       String googleUrl =
                           "https://www.google.com/maps/search/?api=1&query=$query";
 
@@ -121,12 +105,12 @@ class HackatonInfoPage extends StatelessWidget {
                             backgroundColor: MaterialStatePropertyAll(
                                 Color.fromRGBO(1, 110, 237, 1))),
                         onPressed: () async {
-                          if (await canLaunch(regUrl)) {
-                            await launch(regUrl);
+                          if (await canLaunch(hack.regUrl!)) {
+                            await launch(hack.regUrl!);
                           }
                         },
                         child: const Text('Зарегистрироваться')),
-                  )
+                  ),
                 ],
               ),
             )

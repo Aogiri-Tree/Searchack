@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:searchack/pages/admin/admin_page.dart';
 import 'package:searchack/pages/auth/register/register_page.dart';

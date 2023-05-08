@@ -96,14 +96,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 itemCount: hacks.all!.length,
                 itemBuilder: (context, index) {
                   return HackatonCardWidget(
-                    imageUrl: hacks.all![index].imageUrl!,
-                    hackName: hacks.all![index].hackName!,
-                    isOpen: hacks.all![index].isOpen!,
-                    isOnline: hacks.all![index].isOnline!,
-                    description: hacks.all![index].description!,
-                    address: hacks.all![index].address!,
-                    regUrl: hacks.all![index].regUrl!,
-                    inPriority: hacks.all![index].inPriority!,
+                    index: index,
                   );
                 },
               ),

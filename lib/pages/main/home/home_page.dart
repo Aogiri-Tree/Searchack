@@ -79,7 +79,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _Carousel extends StatelessWidget {
-  const _Carousel({super.key});
+  const _Carousel();
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class _Carousel extends StatelessWidget {
 }
 
 class _CardChooser extends StatelessWidget {
-  const _CardChooser({super.key, required this.index});
+  const _CardChooser({required this.index});
 
   final int index;
 

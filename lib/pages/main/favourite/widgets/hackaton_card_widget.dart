@@ -15,6 +15,8 @@ class HackatonCardWidget extends StatefulWidget {
 }
 
 class _HackatonCardWidgetState extends State<HackatonCardWidget> {
+  bool isFavorite = true;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -42,6 +44,8 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
           child: Row(
             children: [
               SizedBox(
+                // height: 300,
+
                 width: 140,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
@@ -71,20 +75,22 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
                         GestureDetector(
                           onTap: () {
                             setState(() {});
-                            hacks.all![widget.index].isFavorite =
-                                !(hacks.all![widget.index].isFavorite)!;
-                            if (hacks.all![widget.index].isFavorite!) {
-                              favorites.add(widget.index);
+
+                            isFavorite = !isFavorite;
+
+                            if (isFavorite == false) {
+                              hacks.all![widget.index].isFavorite = false;
+                              favorites.removeWhere(
+                                  (element) => element == widget.index);
                             } else {
-                              favorites.remove(widget.index);
+                              hacks.all![widget.index].isFavorite = true;
+                              favorites.add(widget.index);
                             }
                           },
                           child: Icon(
                             Icons.favorite,
                             size: 20,
-                            color: hacks.all![widget.index].isFavorite!
-                                ? Colors.red
-                                : Colors.grey,
+                            color: isFavorite ? Colors.red : Colors.grey,
                           ),
                         ),
                       ],

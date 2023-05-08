@@ -10,6 +10,7 @@ import 'package:searchack/services/hackaton_service.dart';
 import 'package:searchack/store/auth_store.dart';
 
 late final Hackaton hacks;
+final List<int> favorites = [];
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
