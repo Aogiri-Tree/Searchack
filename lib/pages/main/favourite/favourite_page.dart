@@ -6,7 +6,9 @@ import 'package:searchack/main.dart';
 import 'package:searchack/pages/main/favourite/widgets/hackaton_card_widget.dart';
 
 class FavouritePage extends StatefulWidget {
-  const FavouritePage({Key? key}) : super(key: key);
+  const FavouritePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<FavouritePage> createState() => _FavouritePageState();

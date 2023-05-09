@@ -17,13 +17,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-  final List<Widget> _widgetOptions = const <Widget>[
-    HomePage(),
-    CatalogPage(),
-    FavouritePage(),
-    ChatPage(),
-    ProfilePage()
+  final List<Widget> _widgetOptions = <Widget>[
+    const HomePage(),
+    const CatalogPage(),
+    const FavouritePage(),
+    const ChatPage(),
+    const ProfilePage()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
