@@ -5,16 +5,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:searchack/main.dart';
 import 'package:searchack/pages/main/favourite/widgets/hackaton_card_widget.dart';
 
-class FavouritePage extends StatefulWidget {
-  const FavouritePage({
+class FavoritePage extends StatefulWidget {
+  const FavoritePage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<FavouritePage> createState() => _FavouritePageState();
+  State<FavoritePage> createState() => _FavoritePageState();
 }
 
-class _FavouritePageState extends State<FavouritePage> {
+class _FavoritePageState extends State<FavoritePage> {
   @override
   void initState() {
     super.initState();

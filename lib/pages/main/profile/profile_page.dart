@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:searchack/pages/main/profile/profile_contacts.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final TextEditingController addressController =
+      TextEditingController(text: 'Москва');
+
+  final TextEditingController emailController =
+      TextEditingController(text: 'anssirod@gmail.com');
+
+  final TextEditingController numberController =
+      TextEditingController(text: '89169422489');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffF5F5F5),
       appBar: AppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 9),
-            child: SvgPicture.asset("assets/icons/share.svg"),
-          ),
-        ],
-        leading: const Icon(
-          Icons.settings,
-          color: Color(0xffD4D4D4),
-        ),
         centerTitle: true,
         bottomOpacity: 0.0,
         backgroundColor: Colors.transparent,
@@ -47,120 +52,51 @@ class ProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    'Аскар Аглямов',
+                    'Данила Калиш',
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                   ),
-                  Text('UX/UI Дизайнер'),
+                  Text('Flutter developer'),
                 ],
               ),
               const SizedBox(height: 13),
             ],
           ),
           const SizedBox(height: 17),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 25),
-                decoration: const BoxDecoration(
-                    color: Color(0xffFFFFFF),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Аскар Аглямов',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-                    ),
-                    SizedBox(height: 6),
-                    Text('UX/UI Дизайнер'),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 16),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 25),
-                decoration: const BoxDecoration(
-                    color: Color(0xffFFFFFF),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Аскар Аглямов',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-                    ),
-                    SizedBox(height: 6),
-                    Text('UX/UI Дизайнер'),
-                  ],
-                ),
-              )
-            ],
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 41),
-                decoration: const BoxDecoration(
-                    color: Color(0xff60A9FF),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Мои резюме',
-                      style: TextStyle(color: Color(0xffFFFFFF)),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 16),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 58),
-                decoration: const BoxDecoration(
-                    color: Color(0xffFFFFFF),
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text('бла бла'),
-                  ],
-                ),
-              )
-            ],
-          ),
-          const SizedBox(height: 10),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
             padding: const EdgeInsets.symmetric(vertical: 16),
             decoration: const BoxDecoration(
                 color: Color(0xffFFFFFF),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(width: 18),
-                SvgPicture.asset(
-                  "assets/icons/blue_user.svg",
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(width: 18),
+                    SvgPicture.asset(
+                      "assets/icons/blue_user.svg",
+                    ),
+                    const SizedBox(width: 16),
+                    const Text(
+                      'Обо мне',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                    ),
+                    const Spacer(),
+                    SvgPicture.asset(
+                      "assets/icons/pencil.svg",
+                    ),
+                    const SizedBox(width: 18),
+                  ],
                 ),
-                const SizedBox(width: 16),
-                const Text(
-                  'Обо мне',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                const SizedBox(height: 18),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text('Кросплатформенный '
+                      'мобильный разработчик, занимаюсь Flutter\'ом с 2018 года'),
                 ),
-                const Spacer(),
-                SvgPicture.asset(
-                  "assets/icons/plus.svg",
-                ),
-                const SizedBox(width: 18),
               ],
             ),
           ),
@@ -189,18 +125,33 @@ class ProfilePage extends StatelessWidget {
                               fontWeight: FontWeight.w600, fontSize: 16),
                         ),
                         const Spacer(),
-                        SvgPicture.asset(
-                          "assets/icons/pencil.svg",
+                        GestureDetector(
+                          onTap: () {
+                            Future push = Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfileContacts(
+                                  addressController: addressController,
+                                  emailController: emailController,
+                                  numberController: numberController,
+                                ),
+                              ),
+                            );
+                            push.then((_) => setState(() {}));
+                          },
+                          child: SvgPicture.asset(
+                            "assets/icons/pencil.svg",
+                          ),
                         ),
                         const SizedBox(width: 18),
                       ],
                     ),
                     const SizedBox(height: 18),
-                    const Text('Москва'),
+                    Text(addressController.text),
                     const SizedBox(height: 10),
-                    const Text('Почта'),
+                    Text(emailController.text),
                     const SizedBox(height: 10),
-                    const Text('+7 916 733 58 48'),
+                    Text(numberController.text),
                   ],
                 ),
               )),
@@ -235,6 +186,8 @@ class ProfilePage extends StatelessWidget {
                         const SizedBox(width: 18),
                       ],
                     ),
+                    const SizedBox(height: 18),
+                    const Text('РТУ МИРЭА'),
                   ],
                 ),
               ))
