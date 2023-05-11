@@ -5,7 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 class OpenChatPage extends StatefulWidget {
-  const OpenChatPage({Key? key}) : super(key: key);
+  const OpenChatPage({Key? key, required this.imageUrl}) : super(key: key);
+  final String imageUrl;
 
   @override
   State<OpenChatPage> createState() => _OpenChatPageState();
@@ -57,14 +58,14 @@ class _OpenChatPageState extends State<OpenChatPage> {
         bottomOpacity: 0.0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: const [
+        actions: [
           CircleAvatar(
             radius: 22,
-            backgroundImage: AssetImage(
-              'assets/logo.png',
+            backgroundImage: NetworkImage(
+              widget.imageUrl,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           )
         ],

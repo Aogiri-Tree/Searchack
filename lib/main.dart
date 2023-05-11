@@ -6,6 +6,7 @@ import 'package:searchack/models/all_model.dart';
 import 'package:searchack/models/hackaton_model.dart';
 import 'package:searchack/pages/admin/admin_page.dart';
 import 'package:searchack/pages/auth/login/login_page.dart';
+import 'package:searchack/pages/main/chat/widgets/hack_chat_widget.dart';
 import 'package:searchack/pages/main/main_page.dart';
 import 'package:searchack/services/firebase_auth_service.dart';
 import 'package:searchack/services/hackaton_service.dart';
@@ -14,6 +15,7 @@ import 'package:searchack/store/auth_store.dart';
 late final Hackaton hacks;
 late final ValueNotifier<List<All>> filteredHacks;
 final List<int> favorites = [1];
+final List<HackChatWidget> hackChats = [];
 
 Future<void> _showNotificationWithActions(
     FlutterLocalNotificationsPlugin plugin) async {

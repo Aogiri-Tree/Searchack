@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:searchack/pages/main/open_chat/open_chat_page.dart';
+import 'package:searchack/pages/main/open_chat/open_hack_chat_page.dart';
 
-class ChatWidget extends StatelessWidget {
+class HackChatWidget extends StatelessWidget {
   final String name;
   final String lastMessage;
   final String imageUrl;
   final String time;
   final String who;
 
-  const ChatWidget(
-      {super.key,
-      required this.name,
-      required this.lastMessage,
-      required this.imageUrl,
-      required this.time,
-      required this.who});
+  const HackChatWidget({
+    super.key,
+    required this.name,
+    required this.lastMessage,
+    required this.imageUrl,
+    required this.time,
+    required this.who,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class ChatWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => OpenChatPage(
+            builder: (context) => OpenHackChatPage(
               imageUrl: imageUrl,
             ),
           ),
