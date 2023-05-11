@@ -30,6 +30,10 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
         );
       },
       child: Card(
+        color:
+            filteredHacks.value[widget.index].hackName!.contains('фармакология')
+                ? Colors.blue[100]
+                : Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),

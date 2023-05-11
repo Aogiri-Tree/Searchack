@@ -27,7 +27,7 @@
             "imageUrl": "https://static.tildacdn.com/tild6137-3633-4339-a237-383937633636/IMG_0560.png",
             "description": "Встречайте: Хакатон «Цифровая фармакология: предсказательное моделирование», который будет посвящен решению задач на стыке IT, химии и медицины! Если вы хотели попробовать себя в одной из этих сфер, то наш хакатон – отличный способ открыть в себе новые таланты.",
             "regUrl": "https://digital-pharmacology.aim.club/auth/signin",
-            "inPriority": true,
+            "inPriority": false,
             "isFavorite": false,
             "tags": [
                 "Chemistry"
