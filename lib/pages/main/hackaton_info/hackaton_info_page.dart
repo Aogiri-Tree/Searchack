@@ -99,18 +99,20 @@ class HackatonInfoPage extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 20),
-                  Center(
-                    child: ElevatedButton(
-                        style: const ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(
-                                Color.fromRGBO(1, 110, 237, 1))),
-                        onPressed: () async {
-                          if (await canLaunch(hack.regUrl!)) {
-                            await launch(hack.regUrl!);
-                          }
-                        },
-                        child: const Text('Зарегистрироваться')),
-                  ),
+                  hack.isOpen! == "Регистрация закрыта"
+                      ? const SizedBox()
+                      : Center(
+                          child: ElevatedButton(
+                              style: const ButtonStyle(
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Color.fromRGBO(1, 110, 237, 1))),
+                              onPressed: () async {
+                                if (await canLaunch(hack.regUrl!)) {
+                                  await launch(hack.regUrl!);
+                                }
+                              },
+                              child: const Text('Зарегистрироваться')),
+                        ),
                 ],
               ),
             )

@@ -87,20 +87,24 @@ class _CatalogPageState extends State<CatalogPage> {
             const SizedBox(
               height: 4,
             ),
-            const SpecializationChoiseWidget(),
+            SpecializationChoiseWidget(hacks: hacks.all!),
             const SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: hacks.all!.length,
-                itemBuilder: (context, index) {
-                  return HackatonCardWidget(
-                    index: index,
+            ValueListenableBuilder(
+                valueListenable: filteredHacks,
+                builder: (context, list, _) {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredHacks.value.length,
+                      itemBuilder: (context, index) {
+                        return HackatonCardWidget(
+                          index: index,
+                        );
+                      },
+                    ),
                   );
-                },
-              ),
-            ),
+                }),
           ],
         ),
       ),

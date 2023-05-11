@@ -10,6 +10,7 @@ class All {
   String? regUrl;
   bool? inPriority;
   bool? isFavorite;
+  List<String>? tags;
 
   All({
     this.hackName,
@@ -23,6 +24,7 @@ class All {
     this.regUrl,
     this.inPriority,
     this.isFavorite,
+    this.tags,
   });
 
   All.fromJson(Map<String, dynamic> json) {
@@ -37,6 +39,7 @@ class All {
     regUrl = json['regUrl'];
     inPriority = json['inPriority'];
     isFavorite = json['isFavorite'];
+    tags = (json['tags'] as List).map((e) => e.toString()).toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -52,6 +55,7 @@ class All {
     data['regUrl'] = regUrl;
     data['inPriority'] = inPriority;
     data['isFavorite'] = isFavorite;
+    data['tags'] = tags;
     return data;
   }
 }

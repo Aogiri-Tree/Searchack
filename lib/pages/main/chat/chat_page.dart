@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:searchack/pages/main/chat/widgets/chat_widget.dart';
 
 class ChatPage extends StatelessWidget {
@@ -12,12 +11,6 @@ class ChatPage extends StatelessWidget {
         bottomOpacity: 0.0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 9),
-            child: SvgPicture.asset("assets/icons/search.svg"),
-          ),
-        ],
         title: const Text(
           "Чаты",
           style: TextStyle(

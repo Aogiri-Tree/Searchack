@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:searchack/main.dart';
+
 import 'package:searchack/pages/main/hackaton_info/hackaton_info_page.dart';
 
 class HackatonCardWidget extends StatefulWidget {
@@ -23,7 +24,7 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
           context,
           MaterialPageRoute(
             builder: (context) => HackatonInfoPage(
-              hack: hacks.all![widget.index],
+              hack: filteredHacks.value[widget.index],
             ),
           ),
         );
@@ -46,7 +47,7 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    hacks.all![widget.index].imageUrl!,
+                    filteredHacks.value[widget.index].imageUrl!,
                     fit: BoxFit.fitHeight,
                   ),
                 ),
@@ -62,7 +63,7 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${hacks.all![widget.index].isOpen!}   ${hacks.all![widget.index].isOnline}',
+                          '${filteredHacks.value[widget.index].isOpen!}   ${filteredHacks.value[widget.index].isOnline}',
                           style: const TextStyle(
                             fontSize: 10,
                             color: Color.fromRGBO(1, 110, 237, 1),
@@ -71,9 +72,10 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
                         GestureDetector(
                           onTap: () {
                             setState(() {});
-                            hacks.all![widget.index].isFavorite =
-                                !(hacks.all![widget.index].isFavorite)!;
-                            if (hacks.all![widget.index].isFavorite!) {
+                            filteredHacks.value[widget.index].isFavorite =
+                                !(filteredHacks
+                                    .value[widget.index].isFavorite)!;
+                            if (filteredHacks.value[widget.index].isFavorite!) {
                               favorites.add(widget.index);
                             } else {
                               favorites.remove(widget.index);
@@ -82,7 +84,7 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
                           child: Icon(
                             Icons.favorite,
                             size: 20,
-                            color: hacks.all![widget.index].isFavorite!
+                            color: filteredHacks.value[widget.index].isFavorite!
                                 ? Colors.red
                                 : Colors.grey,
                           ),
@@ -93,7 +95,7 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
                       height: 5,
                     ),
                     Text(
-                      hacks.all![widget.index].hackName!,
+                      filteredHacks.value[widget.index].hackName!,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -103,7 +105,7 @@ class _HackatonCardWidgetState extends State<HackatonCardWidget> {
                       height: 5,
                     ),
                     Text(
-                      hacks.all![widget.index].description!,
+                      filteredHacks.value[widget.index].description!,
                       style: const TextStyle(fontSize: 10),
                       maxLines: 5,
                       overflow: TextOverflow.ellipsis,

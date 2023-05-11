@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:searchack/main.dart';
+import 'package:searchack/models/all_model.dart';
 
 class SearchFieldWidget extends StatelessWidget {
   const SearchFieldWidget({
@@ -16,6 +18,19 @@ class SearchFieldWidget extends StatelessWidget {
           child: SizedBox(
             height: 36,
             child: TextFormField(
+              onFieldSubmitted: (value) {
+                if (value.isEmpty) {
+                  filteredHacks.value = List.from(hacks.all!);
+                }
+                List<All> helperList = [];
+                for (var hack in filteredHacks.value) {
+                  if (hack.hackName!.contains(value)) {
+                    helperList.add(hack);
+                  }
+                }
+
+                filteredHacks.value = List.from(helperList);
+              },
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,

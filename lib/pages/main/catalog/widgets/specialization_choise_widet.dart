@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:searchack/main.dart';
+import 'package:searchack/models/all_model.dart';
 
 class SpecializationChoiseWidget extends StatefulWidget {
-  const SpecializationChoiseWidget({super.key});
+  const SpecializationChoiseWidget({super.key, required this.hacks});
+
+  final List<All> hacks;
 
   @override
   State<SpecializationChoiseWidget> createState() =>
@@ -11,11 +15,15 @@ class SpecializationChoiseWidget extends StatefulWidget {
 class _SpecializationChoiseWidgetState
     extends State<SpecializationChoiseWidget> {
   static const String all = "Все";
-  List<String> selectedChoices = [];
+  List<String> selectedChoices = ["Все"];
   final specializationList = <String>[
-    "Программирование",
-    "Дизайн",
-    "Картошка",
+    "Android",
+    "Data Science",
+    "Chemistry",
+    "Student",
+    "Security",
+    "Docker",
+    "Design",
   ];
 
   @override
@@ -50,12 +58,26 @@ class _SpecializationChoiseWidgetState
                 setState(() {
                   if (selectedChoices.contains(specializationList[i])) {
                     selectedChoices.remove(specializationList[i]);
+                    filteredHacks.value = List.from(hacks.all!);
                   } else {
                     if (selectedChoices.contains(all)) {
                       selectedChoices.clear();
                     }
 
                     selectedChoices.add(specializationList[i]);
+
+                    filteredHacks.value.clear();
+
+                    List<All> helperList = [];
+
+                    for (All hack in hacks.all!) {
+                      for (String tag in hack.tags!) {
+                        if (selectedChoices.contains(tag)) {
+                          helperList.add(hack);
+                        }
+                      }
+                    }
+                    filteredHacks.value = List.from(helperList.toSet());
                   }
                 });
               },

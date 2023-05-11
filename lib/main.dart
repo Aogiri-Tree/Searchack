@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:searchack/models/all_model.dart';
 import 'package:searchack/models/hackaton_model.dart';
 import 'package:searchack/pages/admin/admin_page.dart';
 import 'package:searchack/pages/auth/login/login_page.dart';
@@ -11,6 +12,7 @@ import 'package:searchack/services/hackaton_service.dart';
 import 'package:searchack/store/auth_store.dart';
 
 late final Hackaton hacks;
+late final ValueNotifier<List<All>> filteredHacks;
 final List<int> favorites = [1];
 
 Future<void> _showNotificationWithActions(
@@ -30,6 +32,8 @@ Future<void> main() async {
   await Firebase.initializeApp();
   hacks = await HackatonService().getHacks();
   hacks.all![1].isFavorite = true;
+
+  filteredHacks = ValueNotifier(List.from(hacks.all!));
 
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();

@@ -42,24 +42,13 @@ class _FavoritePageState extends State<FavoritePage> {
         bottomOpacity: 0.0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 9),
-            child: SvgPicture.asset("assets/icons/filter.svg"),
-          ),
-        ],
         title: Row(
-          children: [
-            const Text(
+          children: const [
+            Text(
               "Избранное",
               style: TextStyle(
                 color: Colors.black,
               ),
-            ),
-            const SizedBox(width: 8),
-            Padding(
-              padding: const EdgeInsets.only(right: 9),
-              child: SvgPicture.asset("assets/icons/chevron_bottom.svg"),
             ),
           ],
         ),
